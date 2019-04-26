@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "go": "nodemon src/index"
   },
   "author": "moshe cohen",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.3.3",
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
