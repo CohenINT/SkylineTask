@@ -1,8 +1,15 @@
 const express = require("express");
 const app = express();
 const colors = require("colors");
+const path = require("path");
+const {compile}= require("nexe");
 
-var A = [1,3,2,1,2,1,5,3,3,4,2];
+
+
+
+app.use(express.urlencoded());
+//var A = new Array(1,3,2,1,2,1,5,3,3,4,2);
+var A;
 var counter = 0;
 
 function decrease() {
@@ -82,7 +89,7 @@ function solution() {
 
 
 
-
+ 
   while (isExistPositiveNums()) {
     countContinues();
     
@@ -92,9 +99,18 @@ function solution() {
   let html_code = "<h4>" + "Number of brushes: " + counter + "</h4>";
   return html_code;
 }
-
-app.get("/", function(req, res) {
+app.get("/",function(req,res){
+//  res.set({ "Content-Type": "text/html;charset=utf-8" });
+res.sendFile(path.join(__dirname,"index.html"));
+});
+app.post("/submit-form", function(req, res) {
   res.set({ "Content-Type": "text/html;charset=utf-8" });
+ console.log(req.body.user_array);
+A=req.body.user_array.split(",");
+
+
+
+
   res.end(solution());
 });
 
